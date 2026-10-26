@@ -1,15 +1,31 @@
-h1 {
-  text-align: center;
-  margin: 30px 0;
-  font-size: 36px;
-  color: #222;
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
 }
 
-.cards-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+.page-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+}
 
+h1 { margin: 4px 0 8px; color: #172554; font-size: 38px; }
+.eyebrow { margin: 0; color: #6366f1; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.intro { margin: 0 0 28px; color: #64748b; }
+.toolbar { display: flex; align-items: center; gap: 12px; margin: 18px 0 28px; }
+.toolbar label { font-weight: 600; }
+.toolbar input { flex: 1; max-width: 520px; }
+input, textarea { box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 8px; padding: 11px 13px; font: inherit; }
+.primary-button, .secondary-button, .danger-button { border: 0; border-radius: 8px; padding: 10px 15px; font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; }
+.primary-button { background: #4f46e5; color: white; }
+.secondary-button { background: #e2e8f0; color: #1e293b; }
+.danger-button { background: #fee2e2; color: #b91c1c; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+.feedback { padding: 18px; border-radius: 8px; background: #f1f5f9; color: #475569; }
+.error { background: #fef2f2; color: #b91c1c; }
+.cards-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
@@ -50,25 +66,6 @@ h1 {
   color: #666;
   margin: 10px 0;
 }
-
-.card button {
-  margin-top: 15px;
-  width: 100%;
-  padding: 12px;
-
-  border: none;
-  border-radius: 8px;
-
-  background: #6366f1;
-  color: white;
-
-  font-size: 15px;
-  font-weight: bold;
-
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.card button:hover {
-  background: #4f46e5;
-}
+.description { min-height: 42px; }
+.card-actions { display: flex; gap: 8px; margin-top: 18px; }
+@media (max-width: 800px) { .cards-container { grid-template-columns: 1fr; } .page-heading { align-items: start; flex-direction: column; } .toolbar { align-items: stretch; flex-direction: column; } }

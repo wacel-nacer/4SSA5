@@ -1,22 +1,44 @@
-<h1>Conferences</h1>
-
-<div class="cards-container">
-  @for (conf of conferances; track $index) {
-    <div class="card">
-
-      <img
-        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87"
-        alt="Conference"
-      />
-
-      <div class="card-content">
-        <h2>{{ conf.name }}</h2>
-
-        <p>📅 {{ conf.date }}</p>
-        <p>📍 {{ conf.place }}</p>
-
-      </div>
-
+<section class="page">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">API REST · HttpClient</p>
+      <h1>Conférences</h1>
+      <p class="intro">Consultez et gérez les événements depuis le backend.</p>
+    </div>
+    <a class="primary-button" routerLink="/list/new">+ Nouvelle conférence</a>
+  </div>
+  <div class="toolbar">
+    <label for="search">Rechercher</label>
+    <input id="search" type="search" [ngModel]="search()" (ngModelChange)="search.set($event)"
+      placeholder="Nom, ville ou description..." />
+    <button type="button" class="secondary-button" (click)="loadConferences()" [disabled]="loading()">Actualiser</button>
+  </div>
+  @if (error()) { <p class="feedback error" role="alert">{{ error() }}</p> }
+  @if (loading()) {
+    <p class="feedback">Chargement des conférences...</p>
+  } @else if (!filteredConferences().length) {
+    <p class="feedback">Aucune conférence ne correspond à votre recherche.</p>
+  } @else {
+    <div class="cards-container">
+      @for (conference of filteredConferences(); track conference.id) {
+        <article class="card">
+          <img [src]="conference.imageUrl || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87'"
+            [alt]="'Illustration de ' + conference.name" />
+          <div class="card-content">
+            <h2>{{ conference.name }}</h2>
+            <p>📅 {{ conference.date | date:'dd/MM/yyyy' }}</p>
+            <p>📍 {{ conference.place }}</p>
+            @if (conference.description) { <p class="description">{{ conference.description }}</p> }
+            <div class="card-actions">
+              <a class="secondary-button" [routerLink]="['/list', conference.id, 'edit']">Modifier</a>
+              <button type="button" class="danger-button" (click)="deleteConference(conference)"
+                [disabled]="deletingId() === conference.id">
+                {{ deletingId() === conference.id ? 'Suppression...' : 'Supprimer' }}
+              </button>
+            </div>
+          </div>
+        </article>
+      }
     </div>
   }
-</div>
+</section>

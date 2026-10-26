@@ -1,0 +1,13 @@
+.form-page { max-width: 720px; margin: 0 auto; padding: 42px 24px 72px; }
+.back-link { color: #4f46e5; text-decoration: none; font-weight: 600; }
+.form-heading { margin: 32px 0 24px; }
+.form-heading h1 { margin: 5px 0 8px; color: #172554; }
+.form-heading p:last-child { color: #64748b; }
+form { display: grid; gap: 9px; padding: 28px; border-radius: 14px; background: white; box-shadow: 0 8px 26px rgb(15 23 42 / 10%); }
+label { margin-top: 8px; color: #334155; font-weight: 600; }
+textarea { resize: vertical; }
+.field-error { color: #b91c1c; }
+.form-meta { display: flex; justify-content: space-between; color: #64748b; font-size: 13px; }
+.valid { color: #15803d; }
+.form-actions { display: flex; justify-content: end; gap: 10px; margin-top: 18px; }
+.feedback { padding: 14px; border-radius: 8px; background: #fef2f2; color: #b91c1c; }

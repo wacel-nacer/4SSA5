@@ -12,6 +12,20 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+## REST API
+
+The conference list uses Angular `HttpClient` and expects a JSON Server API at
+`http://localhost:3000/conferences`. Start it in a second terminal:
+
+```bash
+npm run api
+```
+
+The application includes CRUD operations, search, explicit loading/error
+states, and a reactive form. The form bridges Reactive Forms to Angular
+Signals with `toSignal`, so the character count, validity status, and save
+button update automatically.
+
 ## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
